@@ -19,8 +19,8 @@
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-20.04_%7C_22.04_%7C_24.04-7D3C98?style=flat-square&logo=ubuntu&logoColor=white&labelColor=0D0D0D)
 ![Debian](https://img.shields.io/badge/Debian-10_%7C_11_%7C_12-6C3483?style=flat-square&logo=debian&logoColor=white&labelColor=0D0D0D)
 ![Shell](https://img.shields.io/badge/Shell-Bash-8E44AD?style=flat-square&logo=gnubash&logoColor=white&labelColor=0D0D0D)
-![Status](https://img.shields.io/badge/Status-Active-27AE60?style=flat-square&labelColor=0D0D0D)
 ![Arch](https://img.shields.io/badge/Arch-x86__64-9B59B6?style=flat-square&logo=linux&logoColor=white&labelColor=0D0D0D)
+<img src="https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/assets/online.svg" width="14" height="14" /> <img src="https://img.shields.io/badge/Status-ONLINE-27AE60?style=flat-square&labelColor=0D0D0D" />
 
 </div>
 
@@ -32,6 +32,7 @@
 
 - [Persiapan Server](#-persiapan-server)
 - [Instalasi](#-instalasi)
+- [Update](#-update)
 - [Protokol](#-protokol-yang-tersedia)
 - [Fitur Manajemen](#-fitur-manajemen)
 - [Sistem yang Didukung](#-sistem-yang-didukung)
@@ -74,6 +75,31 @@ apt update -y && apt upgrade -y && wget -q https://raw.githubusercontent.com/win
 | `./premi.sh` | Menjalankan installer utama |
 
 > Script akan otomatis **mendeteksi OS**, mengecek IP address, menginstall semua dependensi, mengkonfigurasi domain, SSL, dan seluruh protokol VPN.
+
+</details>
+
+---
+
+## Update
+
+> Jalankan perintah berikut untuk memperbarui script ke versi terbaru:
+
+```bash
+wget -q https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/update.sh && chmod +x update.sh && ./update.sh
+```
+
+<details>
+<summary><b>Penjelasan detail perintah update</b></summary>
+
+<br/>
+
+| Perintah | Fungsi |
+|:---|:---|
+| `wget -q <url>` | Mengunduh file `update.sh` dari GitHub |
+| `chmod +x update.sh` | Memberikan izin eksekusi pada file update |
+| `./update.sh` | Menjalankan proses update otomatis |
+
+> Script update akan memperbarui seluruh file menu, konfigurasi, dan komponen pendukung secara otomatis tanpa menghapus data akun yang sudah ada.
 
 </details>
 
@@ -173,6 +199,14 @@ Setelah instalasi selesai, ketik:
 menu
 ```
 
+### 5 — Update Script
+
+Untuk memperbarui script ke versi terbaru:
+
+```bash
+wget -q https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/update.sh && chmod +x update.sh && ./update.sh
+```
+
 ---
 
 ## Kontak & Support
@@ -189,6 +223,12 @@ menu
 
 <br/>
 
-<sub><code>[ SYSTEM ONLINE ]</code> &nbsp;·&nbsp; <code>[ ALL PROTOCOLS ACTIVE ]</code> &nbsp;·&nbsp; <code>[ ENCRYPTION ENABLED ]</code></sub>
+<sub>
+<img src="https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/assets/online.svg" width="10" height="10" /> <code>SYSTEM ONLINE</code>
+&nbsp;&nbsp;
+<img src="https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/assets/online.svg" width="10" height="10" /> <code>ALL PROTOCOLS ACTIVE</code>
+&nbsp;&nbsp;
+<img src="https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/assets/online.svg" width="10" height="10" /> <code>ENCRYPTION ENABLED</code>
+</sub>
 
 </div>
