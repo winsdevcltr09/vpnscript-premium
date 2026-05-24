@@ -1,19 +1,21 @@
-
-![Screenshot 2024-06-05 082544](https://github.com/devculturlegend9999/alpha/assets/158546743/ee0b4e39-3384-4cb9-bf74-ba72b89a2a43)
+# DevCultur Exbit VPN Script
 
 ### INSTALL SCRIPT 
 ```
-apt install -y && apt update -y && apt upgrade -y && wget -q https://raw.githubusercontent.com/devculturlegend2025/vpnscript/refs/heads/main/premi.sh && chmod +x premi.sh && ./premi.sh
+apt update -y && apt upgrade -y && wget -q https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/premi.sh && chmod +x premi.sh && ./premi.sh
 ```
 
 ## UPDATE SCRIPT
 ```
-wget -q https://raw.githubusercontent.com/devculturlegend2025/vpnscript/refs/heads/main/update.sh && chmod +x update.sh && ./update.sh
+wget -q https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/update.sh && chmod +x update.sh && ./update.sh
 ```
 
 ### SUPPORT OS LINUX
-- UBUNTU 20.04.05
+- UBUNTU 20.04 LTS
+- UBUNTU 22.04 LTS
+- UBUNTU 24.04 LTS
 - DEBIAN 10
+- DEBIAN 11
 
 ### SETTING CLOUDFLARE
 ```
@@ -24,40 +26,50 @@ wget -q https://raw.githubusercontent.com/devculturlegend2025/vpnscript/refs/hea
 - Always Use HTTPS : OFF
 - UNDER ATTACK MODE : OFF
 ```
+
 ### INFO PORT
 ```
 - PORT WEBSOCKET » 80
 - PORT TLS / SSL » 443
-- PORT HANCED WS » 80 » 8080
+- PORT ENHANCED WS » 80 » 8080
 - PORT NOOBZVPN  » 2082 » 8880  
 ```
+
+### INFO PROTOKOL
+```
+- SSH / OpenSSH      : Port 22
+- Dropbear SSH       : Port 143, 109
+- OpenVPN TCP/UDP    : Port 1194
+- VLESS WS/gRPC      : Port 80/443
+- VMess WS/gRPC      : Port 80/443
+- Trojan WS/gRPC     : Port 80/443
+- Shadowsocks WS     : Port 80/443
+- NoobzVPN           : Port 2082, 8443
+- UDP Custom         : Port 36712
+```
+
 ### `WARNING !`
 ```
 Jika Mendapatkan Status Service Off
 Silahkan Restart Service.
-Jika Statsus Service Masih Off
-Silahkan Reboot vps kalian
+Jika Status Service Masih Off
+Silahkan Reboot VPS kalian
 ```
 
+### CONTACT ADMIN
+```
+Telegram : t.me/dcxii09
+Email    : devculture67@gmail.com
+```
 
-- Langkah 1: 
-Membuat Bot di Telegram
-Buka Telegram dan Cari BotFather:
+### CARA SETUP BOT TELEGRAM
+- Langkah 1: Buka Telegram, cari **BotFather**
+- Langkah 2: Kirim `/newbot` dan ikuti instruksi
+- Langkah 3: Simpan **API Token** yang diberikan BotFather
+- Langkah 4: Dapatkan **Chat ID** Anda via bot `@userinfobot`
+- Langkah 5: Masukkan token dan chat ID saat setup script
 
-Cari BotFather di Telegram dengan mengetikkan "BotFather" di kolom pencarian.
-Pilih BotFather (akun resmi dengan tanda centang biru).
-Membuat Bot Baru:
-![Screenshot 2024-06-04 115130](https://github.com/devculturlegend9999/alpha/assets/158546743/1ef8e3f2-945a-4590-a85e-f14f1b78d7e7)
-Kirim pesan /start ke BotFather untuk memulai.
-Kirim pesan /newbot untuk membuat bot baru.
-Ikuti instruksi untuk memberikan nama dan username untuk bot Anda.
-Setelah selesai, BotFather akan memberikan token API bot. Simpan token ini karena akan digunakan dalam skrip Anda.
-
-
-- Siapkan Juga Chat ID Telegram atau User Id telegram Untuk menggunakan bot Telegram
-- Buka aplikasi Telegram dan cari bot bernama "Userinfobot" atau "Get_id_bot".
-- 
-  ![Screenshot 2024-06-05 082241](https://github.com/devculturlegend9999/alpha/assets/158546743/e97b1869-a38a-4899-a5fb-3a6b331b3558)
-
-Klik "Start" untuk memulai bot.
-Bot akan secara otomatis mengirimkan pesan berisi chat ID kamu.
+---
+**Author : DevCultur Exbit®**  
+**Version : 3.2 (Stable Edition)**  
+**© 2024 - DevCultur Exbit. All Rights Reserved.**
