@@ -276,8 +276,8 @@ clear
 #GANTI PASSWORD DEFAULT
 restart_system(){
 #IZIN SCRIPT
-curl "ipinfo.io/org?token=7a814b6263b02c" > /root/.isp 
-curl "ipinfo.io/city?token=7a814b6263b02c" > /root/.city
+curl "ipinfo.io/org?token=9a8838e5a5ed4b" > /root/.isp 
+curl "ipinfo.io/city?token=9a8838e5a5ed4b" > /root/.city
 MYIP=$(curl -sS ipv4.icanhazip.com)
 echo -e "\e[32mloading...\e[0m" 
 clear
@@ -843,7 +843,7 @@ mesg n || true
 welcome
 EOF
 mkdir -p /root/.info
-curl -sS "ipinfo.io/org?token=7a814b6263b02c" > /root/.info/.isp
+curl -sS "ipinfo.io/org?token=9a8838e5a5ed4b" > /root/.info/.isp
 cat >/etc/cron.d/xp_all <<-END
 		SHELL=/bin/sh
 		PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
@@ -882,7 +882,7 @@ cat >/etc/cron.d/xp_all <<-END
     cat >/home/daily_reboot <<-END
 		5
 	END
-curl -sS "ipinfo.io/city?token=7a814b6263b02c" > /root/.info/.city
+curl -sS "ipinfo.io/city?token=9a8838e5a5ed4b" > /root/.info/.city
 cat >/etc/systemd/system/rc-local.service <<EOF
 [Unit]
 Description=/etc/rc.local
