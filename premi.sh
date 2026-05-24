@@ -88,7 +88,7 @@ gem install lolcat
 apt install wondershaper -y
 clear
 # REPO    
-    REPO="https://raw.githubusercontent.com/devculturlegend2025/vpnscript/main"
+    REPO="https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main"
 
 ####
 start=$(date +%s)
@@ -167,9 +167,15 @@ function first_setup(){
     if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
     echo "Setup Dependencies $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')"
     sudo apt update -y
-    apt-get install --no-install-recommends software-properties-common
-    add-apt-repository ppa:vbernat/haproxy-2.0 -y
-    apt-get -y install haproxy=2.0.\*
+    apt-get install --no-install-recommends software-properties-common -y
+    OS_VER=$(grep -oP '(?<=VERSION_ID=")\d+' /etc/os-release)
+    if [[ "$OS_VER" == "22" || "$OS_VER" == "24" ]]; then
+        add-apt-repository ppa:vbernat/haproxy-2.6 -y
+        apt-get -y install haproxy=2.6.\*
+    else
+        add-apt-repository ppa:vbernat/haproxy-2.0 -y
+        apt-get -y install haproxy=2.0.\*
+    fi
 elif [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "debian" ]]; then
     echo "Setup Dependencies For OS Is $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')"
     curl https://haproxy.debian.net/bernat.debian.org.gpg |
@@ -275,7 +281,7 @@ curl "ipinfo.io/city?token=7a814b6263b02c" > /root/.city
 MYIP=$(curl -sS ipv4.icanhazip.com)
 echo -e "\e[32mloading...\e[0m" 
 clear
-izinsc="https://raw.githubusercontent.com/devculturlegend2025/ijin/main/alpha"
+izinsc="https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/alpha"
 # USERNAME
 rm -f /usr/bin/user
 username=$(curl $izinsc | grep $MYIP | awk '{print $2}')
@@ -538,7 +544,7 @@ print_success "Password SSH"
 function udp_mini(){
 clear
 print_install "Memasang Service Limit IP & Quota"
-wget -q https://raw.githubusercontent.com/devculturlegend2025/vpnscript/main/config/fv-tunnel && chmod +x fv-tunnel && ./fv-tunnel
+wget -q https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/config/fv-tunnel && chmod +x fv-tunnel && ./fv-tunnel
 
 # // Installing UDP Mini
 mkdir -p /usr/local/kyt/
@@ -590,7 +596,7 @@ clear
 print_install "Menginstall Dropbear"
 # // Installing Dropbear
 apt-get install dropbear -y > /dev/null 2>&1
-wget -q -O /etc/default/dropbear https://raw.githubusercontent.com/devculturlegend2025/vpnscript/main/config/dropbear.conf
+wget -q -O /etc/default/dropbear https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/config/dropbear.conf
 chmod +x /etc/default/dropbear
 /etc/init.d/dropbear restart
 /etc/init.d/dropbear status
@@ -600,7 +606,7 @@ print_success "Dropbear"
 function ins_udpSSH(){
 clear
 print_install "Menginstall Udp-custom"
-wget -q https://raw.githubusercontent.com/devculturlegend2025/vpnscript/main/udp-custom/udp-custom.sh
+wget -q https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/udp-custom/udp-custom.sh
 chmod +x udp-custom.sh 
 bash udp-custom.sh
 rm -fr udp-custom.sh
@@ -723,7 +729,7 @@ echo "Banner /etc/kyt.txt" >>/etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/kyt.txt"@g' /etc/default/dropbear
 
 # Ganti Banner
-wget -O /etc/devcultur.txt https://raw.githubusercontent.com/devculturlegend2025/vpnscript/main/files/issue.net
+wget -O /etc/devcultur.txt https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/files/issue.net
 print_success "Fail2ban"
 }
 
