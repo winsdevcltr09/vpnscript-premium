@@ -2,4 +2,3 @@
 # Format: <IP_VPS> <username> <expiry_date>
 # Example: 123.456.789.0 admin 2099-12-31
 # Add your client VPS IPs below:
-243.754.45.07 devExbit 2026-05-31
