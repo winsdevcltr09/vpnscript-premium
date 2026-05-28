@@ -1,12 +1,17 @@
 #!/bin/bash
 clear
+
+# Cek dan install lolcat jika belum ada
+if ! command -v lolcat &>/dev/null; then
+    apt-get install -y ruby >/dev/null 2>&1
+    gem install lolcat >/dev/null 2>&1
+fi
+
 fun_bar() {
-    CMD[0]="$1"
-    CMD[1]="$2"
+    local CMD1="$1"
     (
-        [[ -e $HOME/fim ]] && rm $HOME/fim
-        ${CMD[0]} -y >/dev/null 2>&1
-        ${CMD[1]} -y >/dev/null 2>&1
+        [[ -e $HOME/fim ]] && rm -f $HOME/fim
+        $CMD1
         touch $HOME/fim
     ) >/dev/null 2>&1 &
     tput civis
@@ -16,7 +21,7 @@ fun_bar() {
             echo -ne "\033[0;32m#"
             sleep 0.1s
         done
-        [[ -e $HOME/fim ]] && rm $HOME/fim && break
+        [[ -e $HOME/fim ]] && rm -f $HOME/fim && break
         echo -e "\033[0;33m]"
         sleep 1s
         tput cuu1
@@ -26,63 +31,38 @@ fun_bar() {
     echo -e "\033[0;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
     tput cnorm
 }
+
 res1() {
-    wget https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/menu/menu.zip
-    unzip menu.zip
+    REPO="https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main"
+    cd /tmp
+    wget -q "${REPO}/menu/menu.zip" -O menu.zip
+    unzip -o menu.zip >/dev/null 2>&1
     chmod +x menu/*
-    mv menu/* /usr/local/sbin
-    rm -rf menu.zip
-    rm -rf update.sh
-    wget -qO- fv-tunnel "https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/config/fv-tunnel" 
-    chmod +x fv-tunnel 
-    bash fv-tunnel
-    rm -rf fv-tunnel
+    cp -f menu/* /usr/local/sbin/
+    rm -rf menu menu.zip
+
+    wget -q -O /tmp/fv-tunnel "${REPO}/config/fv-tunnel"
+    chmod +x /tmp/fv-tunnel
+    bash /tmp/fv-tunnel
+    rm -f /tmp/fv-tunnel
+
     cd /usr/local/sbin
-    rm -rf menu
-    rm -rf m-sshws
-    rm -rf addssh
-    rm -rf addtr
-    rm -rf addss
-    rm -rf menu-backup
-    rm -rf backup
-    rm -rf kontol
-    wget https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/menu/menu
-    wget https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/menu/m-sshws
-    wget https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/menu/addssh
-    wget https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/menu/addtr
-    wget https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/menu/addss
-    wget https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/menu/menu-backup
-    wget https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/menu/backup
-    wget https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/menu/regis
-    wget https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/menu/addhost
-    chmod +x menu
-    chmod +x m-sshws
-    chmod +x addssh
-    chmod +x addtr
-    chmod +x addss
-    chmod +x menu-backup
-    chmod +x backup
-    chmod +x regis
-    chmod +x addhost
-    
-   
+    for f in menu m-sshws addssh addtr addss menu-backup backup regis addhost; do
+        rm -f "$f"
+        wget -q "${REPO}/menu/$f"
+        chmod +x "$f"
+    done
+    cd /root
 }
-function noobzvpn() {
-wget "${REPO}/noobzvpns.zip"
-unzip noobzvpns.zip
-bash install.sh
-rm noobzvpns.zip
-systemctl restart noobzvpns
-print_success "NOOBZVPN"
-}
-netfilter-persistent
+
+netfilter-persistent reload >/dev/null 2>&1 || true
 clear
 echo -e "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | lolcat
 echo -e " \e[1;97;101m UPDATE SCRIPT SEDANG BERJALAN !             \e[0m"
 echo -e "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | lolcat
 echo -e ""
 echo -e "  \033[1;91m Update Script Service\033[1;37m"
-fun_bar 'res1'
+fun_bar res1
 echo -e "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | lolcat
 echo -e ""
 read -n 1 -s -r -p "Press [ Enter ] to back on menu"
