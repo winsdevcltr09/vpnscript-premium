@@ -1,2 +1,4 @@
 # DevCultur Exbit VPN Script - IP Whitelist
 # Add allowed VPS IPs below (one per line):
+35.187.118.215
+35.189.224.8
