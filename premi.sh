@@ -281,12 +281,12 @@ curl "ipinfo.io/city?token=9a8838e5a5ed4b" > /root/.city
 MYIP=$(curl -sS ipv4.icanhazip.com)
 echo -e "\e[32mloading...\e[0m" 
 clear
-izinsc="https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/alpha"
+izinsc="https://raw.githubusercontent.com/winsdevcltr09/vpnscript-premium/main/ijin/alpha"
 # USERNAME
 rm -f /usr/bin/user
-username=$(curl $izinsc | grep $MYIP | awk '{print $2}')
+username=$(curl -s $izinsc | grep "^${MYIP} " | awk '{print $2}')
 echo "$username" >/usr/bin/user
-expx=$(curl $izinsc | grep $MYIP | awk '{print $3}')
+expx=$(curl -s $izinsc | grep "^${MYIP} " | awk '{print $3}')
 echo "$expx" >/usr/bin/e
 # DETAIL ORDER
 username=$(cat /usr/bin/user)
@@ -294,8 +294,8 @@ oid=$(cat /usr/bin/ver)
 exp=$(cat /usr/bin/e)
 clear
 # CERTIFICATE STATUS
-d1=$(date -d "$valid" +%s)
-d2=$(date -d "$today" +%s)
+today=$(date -d "0 days" +"%Y-%m-%d"); d1=$(date -d "${expx:-$today}" +%s 2>/dev/null || date +%s)
+d2=$(date +%s)
 certifacate=$(((d1 - d2) / 86400))
 # VPS Information
 DATE=$(date +'%Y-%m-%d')
@@ -310,7 +310,7 @@ mai="datediff "$Exp" "$DATE""
 Info="(${green}Active${NC})"
 Error="(${RED}ExpiRED${NC})"
 today=`date -d "0 days" +"%Y-%m-%d"`
-Exp1=$(curl $izinsc | grep $MYIP | awk '{print $4}')
+Exp1=$(curl -s $izinsc | grep "^${MYIP} " | awk '{print $3}')
 if [[ $today < $Exp1 ]]; then
 sts="${Info}"
 else
@@ -446,6 +446,7 @@ cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/hap.pem
     # > Create Service
     rm -rf /etc/systemd/system/xray.service.d
     cat >/etc/systemd/system/xray.service <<EOF
+[Unit]
 Description=Xray Service
 Documentation=https://github.com
 After=network.target nss-lookup.target
